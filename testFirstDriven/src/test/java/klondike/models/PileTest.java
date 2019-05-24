@@ -138,7 +138,7 @@ public class PileTest {
 		pile.push(new CardBuilder().number(Number.NINE).suit(Suit.CLOVERS).facedUp().build());
 		pile.push(new CardBuilder().number(Number.EIGHT).suit(Suit.DIAMONDS).facedUp().build());
 		pile.push(new CardBuilder().number(Number.SEVEN).suit(Suit.PIKES).facedUp().build());
-		pile.removeTop(4);
+		pile.remove(4);
 		assertTrue(pile.peek().isFacedUp());
 		pile.remove();
 		assertTrue(pile.empty());
