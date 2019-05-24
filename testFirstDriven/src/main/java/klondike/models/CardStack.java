@@ -25,5 +25,9 @@ public class CardStack {
     public void push(Card card) {
         this.cards.push(card);
     }
+    
+    public int size() {
+    	return this.cards.size();
+    }
 
 }
