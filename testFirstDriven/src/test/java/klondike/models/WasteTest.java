@@ -15,8 +15,8 @@ public class WasteTest {
 	
 	protected List<Card> getCards(){
 		List<Card> cards = new ArrayList<Card>();
-		cards.add(new CardBuilder().build());
-		cards.add(new CardBuilder().build());
+		cards.add(new CardBuilder().facedUp().build());
+		cards.add(new CardBuilder().facedUp().build());
 		return cards;
 	}
 	
