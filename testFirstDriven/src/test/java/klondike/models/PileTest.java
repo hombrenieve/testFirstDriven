@@ -54,7 +54,8 @@ public class PileTest {
 	public void testPopEmpty() {
 		Pile pile = new PileBuilder().build();
 		pile.push(this.getCards().get(0));
-		assertEquals(this.getCards().get(0), pile.pop());
+		assertEquals(this.getCards().get(0), pile.peek());
+		pile.remove();
 		assertTrue(pile.empty());
 	}
 	
@@ -63,7 +64,8 @@ public class PileTest {
 		Pile pile = new PileBuilder().build();
 		pile.push(this.getCards().get(0));
 		pile.push(this.getCards().get(1));
-		assertEquals(this.getCards().get(1), pile.pop());
+		assertEquals(this.getCards().get(1), pile.peek());
+		pile.remove();
 		assertEquals(this.getCards().get(0), pile.peek());
 	}
 
@@ -137,7 +139,8 @@ public class PileTest {
 		pile.push(new CardBuilder().number(Number.EIGHT).suit(Suit.DIAMONDS).facedUp().build());
 		pile.push(new CardBuilder().number(Number.SEVEN).suit(Suit.PIKES).facedUp().build());
 		pile.removeTop(4);
-		assertTrue(pile.pop().isFacedUp());
+		assertTrue(pile.peek().isFacedUp());
+		pile.remove();
 		assertTrue(pile.empty());
 	}
 

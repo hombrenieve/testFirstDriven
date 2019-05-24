@@ -29,7 +29,7 @@ public class PileBuilder {
 			List<Card> cards = new ArrayList<Card>();
 			cards.add(new CardBuilder().build());
 			Pile pile = new Pile(0, cards);
-			pile.pop();
+			pile.remove();
 			return pile;
 		}
 		return new Pile(0, this.cardList);

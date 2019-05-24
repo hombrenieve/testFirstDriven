@@ -27,9 +27,10 @@ public class Pile {
 		this.numberOfFaceUpCards++;
 	}
 
-	public Card pop() {
+	public void remove() {
+		assert !cards.empty();
 		this.numberOfFaceUpCards--;
-		return cards.pop();
+		cards.remove(cards.size()-1);
 	}
 
 	private void flipFirstCard() {
