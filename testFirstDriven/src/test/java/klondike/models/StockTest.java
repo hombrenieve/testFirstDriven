@@ -1,23 +1,73 @@
 package klondike.models;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
+import klondike.models.builders.CardBuilder;
 import klondike.models.builders.EmptyStockBuilder;
 
-public class StockTest extends CardStackTest {
-
-	@Override
-	protected CardStack createCardStack() {
-		return new EmptyStockBuilder().build();
-	}
+public class StockTest {
 	
 	private static final int NUMBER_CARDS = Number.values().length * Suit.values().length;
+	
+	protected List<Card> getCards(){
+		List<Card> cards = new ArrayList<Card>();
+		cards.add(new CardBuilder().build());
+		cards.add(new CardBuilder().build());
+		return cards;
+	}
+	
+	@Test
+	public void testEmptyWithEmpty() {
+		Stock stock = new EmptyStockBuilder().build();
+		assertTrue(stock.empty());
+	}
+	
+	@Test
+	public void testEmptyWithNotEmpty() {
+		Stock stock = new EmptyStockBuilder().build();
+		stock.push(this.getCards().get(0));
+		assertFalse(stock.empty());
+	}
+
+	@Test
+	public void testPushWithEmpty() {
+		Stock stock = new EmptyStockBuilder().build();
+		stock.push(this.getCards().get(0));
+		assertEquals(this.getCards().get(0), stock.peek());
+	}
+	
+	@Test
+	public void testPushWithNotEmpty() {
+		Stock stock = new EmptyStockBuilder().build();
+		stock.push(this.getCards().get(0));
+		stock.push(this.getCards().get(1));
+		assertEquals(this.getCards().get(1), stock.peek());
+	}
+
+	@Test
+	public void testPopEmpty() {
+		Stock stock = new EmptyStockBuilder().build();
+		stock.push(this.getCards().get(0));
+		assertEquals(this.getCards().get(0), stock.pop());
+		assertTrue(stock.empty());
+	}
+	
+	@Test
+	public void testPopNotEmpty() {
+		Stock stock = new EmptyStockBuilder().build();
+		stock.push(this.getCards().get(0));
+		stock.push(this.getCards().get(1));
+		assertEquals(this.getCards().get(1), stock.pop());
+		assertEquals(this.getCards().get(0), stock.peek());
+	}
 	
 	@Test
 	public void testStock() {
