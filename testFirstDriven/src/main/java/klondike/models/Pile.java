@@ -27,10 +27,11 @@ public class Pile {
 		this.numberOfFaceUpCards++;
 	}
 
-	public void remove() {
-		assert !cards.empty();
-		this.numberOfFaceUpCards--;
-		cards.remove(cards.size()-1);
+	public void push(List<Card> cards) {
+		assert cards != null;
+		for (Card card : cards) {
+			this.push(card);
+		}
 	}
 
 	private void flipFirstCard() {
@@ -45,15 +46,17 @@ public class Pile {
 				&& this.cards.peek().isNextTo(card) && this.cards.peek().getColor() != card.getColor());
 	}
 
+	public Card peek() {
+		return this.cards.peek();
+	}
+
 	public List<Card> peek(int numberOfCards) {
 		assert numberOfCards <= this.numberOfFaceUpCards;
 		return new ArrayList<Card>(this.cards.subList(this.cards.size() - numberOfCards, this.cards.size()));
 	}
 
-	public void push(List<Card> cards) {
-		assert cards != null;
-		this.cards.addAll(cards);
-		this.numberOfFaceUpCards += cards.size();
+	public void remove() {
+		this.remove(1);
 	}
 
 	public void remove(int numberOfCards) {
@@ -82,9 +85,5 @@ public class Pile {
 	public int getNumber() {
 		return this.number;
 	}
-
-    public Card peek() {
-        return this.cards.peek();
-    }
 
 }
