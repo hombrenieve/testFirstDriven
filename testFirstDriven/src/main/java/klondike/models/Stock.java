@@ -35,10 +35,13 @@ public class Stock {
     }
 
     public Card pop() {
+        assert !this.cards.empty();
         return this.cards.pop();
     }
 
     public void push(Card card) {
+        assert card != null;
+        assert !card.isFacedUp();
         this.cards.push(card);
     }
     

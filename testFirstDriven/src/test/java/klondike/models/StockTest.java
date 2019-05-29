@@ -59,6 +59,12 @@ public class StockTest {
 		assertEquals(this.getCards().get(0), stock.pop());
 		assertTrue(stock.empty());
 	}
+
+	@Test(expected = AssertionError.class)
+	public void testPopWhenEmpty() {
+		Stock stock = new EmptyStockBuilder().build();
+		stock.pop();
+	}
 	
 	@Test
 	public void testPopNotEmpty() {
