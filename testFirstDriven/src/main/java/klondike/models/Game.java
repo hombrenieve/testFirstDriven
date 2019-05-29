@@ -83,7 +83,7 @@ public class Game {
         if (!pile.fitsIn(this.waste.peek())) {
             return Error.NO_FIT_PILE;
         }
-        pile.push(Arrays.asList(this.waste.pop()));
+        pile.push(this.waste.pop());
         return null;
     }
 
@@ -98,7 +98,7 @@ public class Game {
         if (!pile.fitsIn(foundation.peek())) {
             return Error.NO_FIT_PILE;
         }
-        pile.push(Arrays.asList(foundation.pop()));
+        pile.push(foundation.pop());
         return null;
     }
 
