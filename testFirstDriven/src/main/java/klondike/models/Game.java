@@ -53,9 +53,8 @@ public class Game {
         if (this.waste.empty()) {
             return Error.EMPTY_WASTE;
         }
-        Card card = this.waste.peek();
         Foundation foundation = this.foundations.get(suit);
-        if (!foundation.fitsIn(card)) {
+        if (!foundation.fitsIn(this.waste.peek())) {
             return Error.NO_FIT_FOUNDATION;
         }
         foundation.push(this.waste.pop());
@@ -80,9 +79,8 @@ public class Game {
         if (this.waste.empty()) {
             return Error.EMPTY_WASTE;
         }
-        Card card = this.waste.peek();
         Pile pile = this.piles.get(pileIndex);
-        if (!pile.fitsIn(card)) {
+        if (!pile.fitsIn(this.waste.peek())) {
             return Error.NO_FIT_PILE;
         }
         pile.push(Arrays.asList(this.waste.pop()));
@@ -97,8 +95,7 @@ public class Game {
         if (foundation.empty()) {
             return Error.EMPTY_FOUNDATION;
         }
-        Card card = foundation.peek();
-        if (!pile.fitsIn(card)) {
+        if (!pile.fitsIn(foundation.peek())) {
             return Error.NO_FIT_PILE;
         }
         pile.push(Arrays.asList(foundation.pop()));
@@ -118,7 +115,7 @@ public class Game {
             return Error.NO_FIT_FOUNDATION;
         }
         foundation.push(card);
-        pile.remove(1);
+        pile.remove();
         return null;
     }
 
