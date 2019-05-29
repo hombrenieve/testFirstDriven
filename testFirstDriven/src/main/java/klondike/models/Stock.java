@@ -45,9 +45,5 @@ public class Stock {
         assert !card.isFacedUp();
         this.cards.push(card);
     }
-    
-    public int size() {
-    	return this.cards.size();
-    }
 
 }
