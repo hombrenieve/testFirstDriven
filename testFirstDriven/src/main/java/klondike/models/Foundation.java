@@ -8,6 +8,7 @@ public class Foundation {
     private Stack<Card> cards;
 
     public Foundation(Suit suit) {
+        assert suit != null;
         this.suit = suit;
         this.cards = new Stack<Card>();
     }
@@ -32,10 +33,12 @@ public class Foundation {
     }
 
     public Card peek() {
+        assert !this.cards.empty();
         return this.cards.peek();
     }
 
     public Card pop() {
+        assert !this.cards.empty();
         return this.cards.pop();
     }
 

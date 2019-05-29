@@ -15,10 +15,12 @@ public class Waste {
     }
 
     public Card peek() {
+        assert !this.cards.empty();
         return this.cards.peek();
     }
 
     public Card pop() {
+        assert !this.cards.empty();
         return this.cards.pop();
     }
 

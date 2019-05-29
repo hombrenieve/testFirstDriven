@@ -31,6 +31,7 @@ public class Stock {
     }
 
     public Card peek() {
+        assert !this.cards.empty();
         return this.cards.peek();
     }
 

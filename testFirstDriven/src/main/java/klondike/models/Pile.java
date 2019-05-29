@@ -47,6 +47,7 @@ public class Pile {
 	}
 
 	public Card peek() {
+		assert !this.cards.empty();
 		return this.cards.peek();
 	}
 
