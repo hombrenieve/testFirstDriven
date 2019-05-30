@@ -9,10 +9,18 @@ public class FoundationMap {
 
     public FoundationMap() {
         this.foundations = new HashMap<Suit, Foundation>();
+        for (Suit suit : Suit.values()) {
+            this.foundations.put(suit, new Foundation(suit));
+        }
     }
 
     public boolean isFinished() {
-        return false;
+        for (Suit suit : Suit.values()) {
+            if (!this.foundations.get(suit).isComplete()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public Foundation get(Suit suit) {
