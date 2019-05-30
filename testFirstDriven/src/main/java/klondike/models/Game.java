@@ -22,6 +22,10 @@ public class Game {
         this.stock = new Stock();
         this.waste = new Waste();
         this.buildFoundations();
+        this.buildPiles();
+    }
+
+    private void buildPiles() {
         this.piles = new ArrayList<Pile>();
         for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
             this.piles.add(new Pile(i + 1, this.stock.pop(i + 1)));
