@@ -21,13 +21,17 @@ public class Game {
     public void clear() {
         this.stock = new Stock();
         this.waste = new Waste();
-        this.foundations = new HashMap<Suit, Foundation>();
-        for (Suit suit : Suit.values()) {
-            this.foundations.put(suit, new Foundation(suit));
-        }
+        this.buildFoundations();
         this.piles = new ArrayList<Pile>();
         for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
             this.piles.add(new Pile(i + 1, this.stock.pop(i + 1)));
+        }
+    }
+
+    private void buildFoundations() {
+        this.foundations = new HashMap<Suit, Foundation>();
+        for (Suit suit : Suit.values()) {
+            this.foundations.put(suit, new Foundation(suit));
         }
     }
 
