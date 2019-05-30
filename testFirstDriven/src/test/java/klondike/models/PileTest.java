@@ -144,4 +144,27 @@ public class PileTest {
 		assertTrue(pile.empty());
 	}
 
+	@Test
+	public void testNumberOfFacedUpCards() {
+		Pile pile = new PileBuilder().card()
+				.card(new CardBuilder().number(Number.TEN).suit(Suit.DIAMONDS).facedUp().build()).build();
+		assertEquals(1, pile.numberOfFaceUpCards());
+	}
+
+	@Test
+	public void testNumberOfFacedUpCardsAfterPush() {
+		Pile pile = new PileBuilder().card()
+				.card(new CardBuilder().number(Number.TEN).suit(Suit.DIAMONDS).facedUp().build()).build();
+		pile.push(new CardBuilder().number(Number.NINE).suit(Suit.CLOVERS).facedUp().build());
+		assertEquals(2, pile.numberOfFaceUpCards());
+	}
+
+	@Test
+	public void testNumberOfFacedUpCardsAfterRemove() {
+		Pile pile = new PileBuilder().card()
+				.card(new CardBuilder().number(Number.TEN).suit(Suit.DIAMONDS).facedUp().build()).build();
+		pile.remove();
+		assertEquals(1, pile.numberOfFaceUpCards());
+	}
+
 }
