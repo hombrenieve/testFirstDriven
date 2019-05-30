@@ -10,7 +10,7 @@ public class Game {
 
     private Waste waste;
 
-    private Map<Suit, Foundation> foundations;
+    private FoundationMap foundations;
 
     private List<Pile> piles;
 
@@ -21,7 +21,7 @@ public class Game {
     public void clear() {
         this.stock = new Stock();
         this.waste = new Waste();
-        this.buildFoundations();
+        this.foundations = new FoundationMap();
         this.buildPiles();
     }
 
@@ -32,20 +32,8 @@ public class Game {
         }
     }
 
-    private void buildFoundations() {
-        this.foundations = new HashMap<Suit, Foundation>();
-        for (Suit suit : Suit.values()) {
-            this.foundations.put(suit, new Foundation(suit));
-        }
-    }
-
     public boolean isFinished() {
-        for (Suit suit : Suit.values()) {
-            if (!this.foundations.get(suit).isComplete()) {
-                return false;
-            }
-        }
-        return true;
+        return this.foundations.isFinished();
     }
 
     public Error moveFromStockToWaste() {
@@ -157,7 +145,7 @@ public class Game {
         return this.waste;
     }
 
-    public Map<Suit, Foundation> getFoundations() {
+    public FoundationMap getFoundations() {
         return foundations;
     }
 

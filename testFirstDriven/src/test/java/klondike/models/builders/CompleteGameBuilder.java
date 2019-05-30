@@ -1,8 +1,7 @@
 package klondike.models.builders;
 
-import java.util.Map;
-
 import klondike.models.Foundation;
+import klondike.models.FoundationMap;
 import klondike.models.Game;
 import klondike.models.Number;
 import klondike.models.Suit;
@@ -11,7 +10,7 @@ public class CompleteGameBuilder {
 
 	public Game build() {
 		Game game = new Game();
-		Map<Suit, Foundation> foundations = game.getFoundations();
+		FoundationMap foundations = game.getFoundations();
 		for(int i=0; i< Suit.values().length; i++) {
 			Foundation foundation = foundations.get(Suit.values()[i]);
 			for(int j=0; j<Number.values().length; j++) {

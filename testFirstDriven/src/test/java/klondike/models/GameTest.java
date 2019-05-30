@@ -6,7 +6,6 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
-import java.util.Map;
 
 import org.junit.Test;
 
@@ -29,7 +28,7 @@ public class GameTest {
 	}
 
 	private void testFoundationsClear(Game game) {
-		Map<Suit, Foundation> foundations = game.getFoundations();
+		FoundationMap foundations = game.getFoundations();
 		for (Suit suit : Suit.values()) {
 			assertTrue(foundations.get(suit).empty());
 		}
